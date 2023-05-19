@@ -25,6 +25,9 @@ if (APPLE)
 elseif (UNIX)
     include_directories(./includes/MindVision/Linux/include)
     link_directories(./includes/MindVision/Linux/lib)
+elseif (WIN32)
+    include_directories(./includes/MindVision/Windows/include)
+    link_directories(./includes/MindVision/Windows/lib)
 endif ()
 
 add_executable(${PROJECT_NAME}
