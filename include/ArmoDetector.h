@@ -1,0 +1,7 @@
+#ifndef INFANTRY_2024_ARMORAIM_ARMODETECTOR_H
+#define INFANTRY_2024_ARMORAIM_ARMODETECTOR_H
+
+#include <opencv2/core/core.hpp>
+#include "ImageLoader.h"
+
+#endif //INFANTRY_2024_ARMORAIM_ARMODETECTOR_H
