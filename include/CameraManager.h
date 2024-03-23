@@ -28,6 +28,7 @@ public:
         return instance;
     }
 
+    int getTotalCameraCount() const;
     CameraHandler getCameraHandler(int cameraIndex) const;
 };
 

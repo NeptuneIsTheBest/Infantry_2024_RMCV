@@ -1,19 +1,30 @@
 #ifndef INFANTRY_2024_CV_EXCEPTION_H
 #define INFANTRY_2024_CV_EXCEPTION_H
 
-#include <sstream>
-#include <stdexcept>
+#include <string>
+#include <exception>
+#include <utility>
 
-#include "CameraApi.h"
+#include "CameraStatus.h"
 
 using namespace std;
 
-class Exception {
+class CameraException : public exception {
+private:
+    string message;
+    CameraSdkStatus cameraSdkStatus;
+    bool hasSdkStatus;
 public:
-    static runtime_error returnRuntimeError(const string &message);
+    explicit CameraException(string msg) : message(std::move(msg)), cameraSdkStatus(), hasSdkStatus(false) {}
 
-    static runtime_error returnRuntimeError(const string &message, CameraSdkStatus cameraSdkStatus);
+    CameraException(string msg, CameraSdkStatus status)
+            : message(std::move(msg)), cameraSdkStatus(status), hasSdkStatus(true) {}
+
+    const char * what() const noexcept override;
+
+    bool hasCameraSdkStatus() const;
+
+    CameraSdkStatus getCameraSdkStatus() const;
 };
-
 
 #endif //INFANTRY_2024_CV_EXCEPTION_H

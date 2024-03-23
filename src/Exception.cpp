@@ -1,13 +1,16 @@
 #include "Exception.h"
 
-runtime_error Exception::returnRuntimeError(const string &message) {
-    ostringstream oss;
-    oss << message << ".";
-    return runtime_error(oss.str());
+const char *CameraException::what() const noexcept {
+    return message.c_str();
 }
 
-runtime_error Exception::returnRuntimeError(const string &message, CameraSdkStatus cameraSdkStatus) {
-    ostringstream oss;
-    oss << message << " - Camera SDK Status (" << cameraSdkStatus << ").";
-    return runtime_error(oss.str());
+bool CameraException::hasCameraSdkStatus() const {
+    return hasSdkStatus;
+}
+
+CameraSdkStatus CameraException::getCameraSdkStatus() const {
+    if (!hasSdkStatus){
+        throw logic_error("相机SDK状态码不适用于这个错误");
+    }
+    return cameraSdkStatus;
 }
