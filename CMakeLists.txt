@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 project(Infantry_2024_CV)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 find_package(OpenCV REQUIRED)
 
 add_compile_options(-Wall -Werror)
@@ -34,7 +34,10 @@ add_executable(${PROJECT_NAME}
         main.cpp
         src/ImageLoader.cpp
         src/ArmoDetector.cpp
-        )
+        src/Camera/CameraHandler.cpp
+        src/Camera/CameraManager.cpp
+        src/Exception.cpp
+)
 
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 target_link_libraries(${PROJECT_NAME} mvsdk)
