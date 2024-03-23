@@ -11,14 +11,14 @@ using namespace std;
 
 class CameraException : public exception {
 private:
-    string message;
-    CameraSdkStatus cameraSdkStatus;
-    bool hasSdkStatus;
+    string m_message;
+    CameraSdkStatus m_cameraSdkStatus;
+    bool m_hasSdkStatus;
 public:
-    explicit CameraException(string msg) : message(std::move(msg)), cameraSdkStatus(), hasSdkStatus(false) {}
+    explicit CameraException(string msg) : m_message(std::move(msg)), m_cameraSdkStatus(), m_hasSdkStatus(false) {}
 
     CameraException(string msg, CameraSdkStatus status)
-            : message(std::move(msg)), cameraSdkStatus(status), hasSdkStatus(true) {}
+            : m_message(std::move(msg)), m_cameraSdkStatus(status), m_hasSdkStatus(true) {}
 
     const char * what() const noexcept override;
 

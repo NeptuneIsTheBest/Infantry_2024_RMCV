@@ -1,16 +1,16 @@
 #include "Exception.h"
 
 const char *CameraException::what() const noexcept {
-    return message.c_str();
+    return m_message.c_str();
 }
 
 bool CameraException::hasCameraSdkStatus() const {
-    return hasSdkStatus;
+    return m_hasSdkStatus;
 }
 
 CameraSdkStatus CameraException::getCameraSdkStatus() const {
-    if (!hasSdkStatus){
+    if (!m_hasSdkStatus){
         throw logic_error("相机SDK状态码不适用于这个错误");
     }
-    return cameraSdkStatus;
+    return m_cameraSdkStatus;
 }
