@@ -33,10 +33,10 @@ endif ()
 add_executable(${PROJECT_NAME}
         main.cpp
         src/ImageLoader.cpp
-        src/ArmoDetector.cpp
         src/Camera/CameraHandler.cpp
         src/Camera/CameraManager.cpp
         src/Exception.cpp
+        src/Camera/LoadMVCam.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})

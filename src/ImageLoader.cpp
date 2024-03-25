@@ -96,7 +96,7 @@ CameraSdkStatus ImageLoader::GetFrame(cv::Mat &frame) {
             CameraCapability.sResolutionRange.iHeightMax * CameraCapability.sResolutionRange.iWidthMax * 3;
     tSdkFrameHead frameInfo;
     BYTE *rawFrameBuffer;
-    BYTE *frameBuffer = (BYTE *) CameraAlignMalloc(frameBufferSize, 16);
+    BYTE *frameBuffer = CameraAlignMalloc(frameBufferSize, 16);
 
     cameraSdkStatus = CameraGetImageBuffer(CameraHandle, &frameInfo, &rawFrameBuffer, 1000);
     if (cameraSdkStatus != CAMERA_STATUS_SUCCESS) {
